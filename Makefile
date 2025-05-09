@@ -16,4 +16,4 @@ stop-all:
 clean-all:
 	docker system prune -a --volumes -f
 
-restart: stop-all clean-all start
+rebuild: stop-all clean-all start
