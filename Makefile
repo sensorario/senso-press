@@ -16,4 +16,12 @@ stop-all:
 clean-all:
 	docker system prune -a --volumes -f
 
-rebuild: stop-all clean-all start
+rebuild:
+	docker compose down --rmi all --volumes --remove-orphans
+	docker system prune -a --volumes -f
+	rm -rf ./build/**
+	bash wp.sh
+	bash plugin.sh
+	bash build.sh
+	docker compose up --build -d
+	@echo http://localhost:8080
