@@ -19,7 +19,10 @@ clean-all:
 rebuild:
 	docker compose down --rmi all --volumes --remove-orphans
 	docker system prune -a --volumes -f
+	rm -rf ./wp/**
 	rm -rf ./build/**
+	rm -rf ./plugins/**
+	rm -rf ./wordpress/**
 	bash wp.sh
 	bash plugin.sh
 	bash build.sh
